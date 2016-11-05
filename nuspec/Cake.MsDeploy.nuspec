@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+      <id>Cake.MsDeploy</id>
+      <version>0.0.0</version>
+      <authors>Louis Fischer,cake-contrib</authors>
+      <owners>Louis Fischer,cake-contrib</owners>
+      <title>Cake.MsDeploy</title>
+      <description>Cake Build addin for using the MsDeploy command line interface (cli).</description>
+      <summary>MsDeploy addin for cake build.</summary>
+      <licenseUrl>https://github.com/louisfischer/Cake.MsDeploy/blob/master/LICENSE</licenseUrl>
+      <projectUrl>https://github.com/louisfischer/Cake.MsDeploy</projectUrl>
+      <iconUrl>https://raw.githubusercontent.com/cake-build/graphics/master/png/cake-small.png</iconUrl>
+      <requireLicenseAcceptance>false</requireLicenseAcceptance>
+      <copyright>Copyright (c) Louis Fischer 2016</copyright>
+      <releaseNotes>Initial Release</releaseNotes>
+      <tags>cake script build msdeploy webdeploy</tags>
+       <dependencies>
+           <dependency id="Cake.Core" version="0.16.2" />
+       </dependencies>
+   </metadata>
+   <files>
+      <file src="Cake.MsDeploy.dll" target="lib/net45" />
+      <file src="Cake.MsDeploy.xml" target="lib/net45" />
+      <file src="LICENSE" />
+   </files>
+</package>
