@@ -13,6 +13,3 @@ branches:
     - develop
 
 skip_tags: true
-
-skip_commits:
-  message: /(doc).*/

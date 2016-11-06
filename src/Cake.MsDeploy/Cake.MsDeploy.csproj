@@ -116,7 +116,6 @@
     <Compile Include="Rules\ReplacementRule.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Cake.MsDeploy.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

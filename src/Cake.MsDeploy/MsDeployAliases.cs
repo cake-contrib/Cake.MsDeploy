@@ -12,6 +12,7 @@ namespace Cake.MsDeploy
     /// </para>    
     /// See also https://www.microsoft.com/en-us/download/details.aspx?id=43717 
     /// </summary>
+    [CakeAliasCategory("MsDeploy")]
     [CakeAliasCategory("Deployment")]
     [CakeNamespaceImport("Cake.MsDeploy")]
     [CakeNamespaceImport("Cake.MsDeploy.Directives")]
@@ -30,11 +31,35 @@ namespace Cake.MsDeploy
         /// <code>
         ///     var settings = new MsDeploySettings
         ///     {
-        ///         Verb = Operation
-        ///         Configurations = new[] { "Debug", "Release" },
-        ///         OutputDirectory = "./artifacts/",
-        ///         Quiet = true
-        ///     };
+        ///         Verb = Operation.Sync,
+        ///         RetryAttempts = 5,
+        ///         RetryInterval = 5000,
+        ///         Source = new PackageProvider
+        ///         {
+        ///             Direction = MsDeploy.Providers.Direction.source,
+        ///             Path = "./src/Application.zip"
+        ///         },
+        ///         Destination = new AutoProvider
+        ///         {
+        ///             Direction = MsDeploy.Providers.Direction.dest,
+        ///             IncludeAcls = false,
+        ///             AuthenticationType = MsDeploy.Providers.AuthenticationScheme.NTLM,
+        ///             ComputerName = "cake.computerName.com",
+        ///             TempAgent = true
+        ///          },
+        ///          AllowUntrusted = true,
+        ///          PreSyncCommand = "%windir%\\System32\\inetsrv\\appcmd.exe stop APPPOOL NameOfAppPool",
+        ///          PostSyncCommand = "%windir%\\System32\\inetsrv\\appcmd.exe start APPPOOL NameOfAppPool",
+        ///          WhatIf = true,
+        ///          SetParams = new List&lt;SetParameter&gt;
+        ///          {
+        ///             new SetParameter
+        ///             {
+        ///                 Name = "IIS Web Application Name",
+        ///                 Value = "www.cake.com"
+        ///             }
+        ///          }
+        ///      };
         ///
         ///     MsDeploy(settings);
         /// </code>

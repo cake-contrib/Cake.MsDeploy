@@ -1,4 +1,5 @@
 #addin "Cake.Figlet"
+#addin "Cake.Git"
 #tool "xunit.runner.console"
 
 //////////////////////////////////////////////////////////////////////
@@ -43,6 +44,7 @@ Setup(context =>
 {
     //Executed BEFORE the first task.
     Information(Figlet(appName));
+
 });
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -52,6 +54,7 @@ Setup(context =>
 Task("Clean")
     .Does(() =>
 {
+    
     CleanDirectories(new DirectoryPath[]
     {
         buildDir, 
