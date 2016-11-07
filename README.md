@@ -77,6 +77,6 @@ Cake.MsDeploy is covered by set of xUnit tests.
 
 ## License
 
-Copyright (c) 2016 Louis Fischer
+Copyright (c) 2016 Cake Contributions Organization
 
-Cake.MsDeploy is provided as-is under the MIT license. For more information see [LICENSE](https://github.com/louisfischer/Cake.MsDeploy/blob/master/LICENSE).
+Cake.MsDeploy is provided as-is under the MIT license. For more information see [LICENSE](https://github.com/cake-contrib/Cake.MsDeploy/blob/master/LICENSE).
