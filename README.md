@@ -5,7 +5,7 @@ In order to use this extension, [MsDeploy v3.6](https://www.microsoft.com/en-us/
 
 ## Build Status
 
-![AppVeyor](https://ci.appveyor.com/api/projects/status/github/louisfischer/Cake.MsDeploy)
+![AppVeyor](https://ci.appveyor.com/api/projects/status/github/cake-contrib/Cake.MsDeploy)
 
 ## Referencing
 
