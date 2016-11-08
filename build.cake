@@ -13,10 +13,12 @@ var appName = "Cake.MsDeploy";
 //////////////////////////////////////////////////////////////////////
 // VARIABLES
 //////////////////////////////////////////////////////////////////////
-
 var local = BuildSystem.IsLocalBuild;
 var isRunningOnAppVeyor = AppVeyor.IsRunningOnAppVeyor;
 var isPullRequest = AppVeyor.Environment.PullRequest.IsPullRequest;
+
+var branchName = isRunningOnAppVeyor ? EnvironmentVariable("APPVEYOR_REPO_BRANCH") : GitBranchCurrent(DirectoryPath.FromString(".")).FriendlyName;
+var isMasterBranch = System.String.Equals("master", branchName, System.StringComparison.OrdinalIgnoreCase);
 
 var releaseNotes = ParseReleaseNotes("./ReleaseNotes.md");
 
@@ -42,9 +44,7 @@ var zipPackage = buildResultDir + "/Cake-MsDeploy-v" + semVersion + ".zip";
 
 Setup(context =>
 {
-    //Executed BEFORE the first task.
     Information(Figlet(appName));
-
 });
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -53,8 +53,7 @@ Setup(context =>
 
 Task("Clean")
     .Does(() =>
-{
-    
+{   
     CleanDirectories(new DirectoryPath[]
     {
         buildDir, 
@@ -87,7 +86,7 @@ Task("Patch-Assembly-Info")
         Version = version,
         FileVersion = version,
         InformationalVersion = semVersion,
-        Copyright = "Copyright (c) Louis Fischer 2016"
+        Copyright = "Copyright (c) Cake Contributions Organization 2016"
     });
 });
 
@@ -154,6 +153,7 @@ Task("Publish-Nuget")
     .IsDependentOn("Create-NuGet-Packages")
     .WithCriteria(() => isRunningOnAppVeyor)
     .WithCriteria(() => !isPullRequest)
+    .WithCriteria(() => isMasterBranch)
     .Does(() =>
 {
     var apiKey = EnvironmentVariable("NUGET_API_KEY");

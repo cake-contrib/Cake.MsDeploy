@@ -3,16 +3,16 @@
    <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
       <id>Cake.MsDeploy</id>
       <version>0.0.0</version>
-      <authors>Louis Fischer,cake-contrib</authors>
-      <owners>Louis Fischer,cake-contrib</owners>
+      <authors>louisfischer</authors>
+      <owners>louisfischer,cake-contrib</owners>
       <title>Cake.MsDeploy</title>
       <description>Cake Build addin for using the MsDeploy command line interface (cli).</description>
       <summary>MsDeploy addin for cake build.</summary>
-      <licenseUrl>https://github.com/louisfischer/Cake.MsDeploy/blob/master/LICENSE</licenseUrl>
-      <projectUrl>https://github.com/louisfischer/Cake.MsDeploy</projectUrl>
+      <licenseUrl>https://github.com/cake-contrib/Cake.MsDeploy/blob/master/LICENSE</licenseUrl>
+      <projectUrl>https://github.com/cake-contrib/Cake.MsDeploy</projectUrl>
       <iconUrl>https://raw.githubusercontent.com/cake-build/graphics/master/png/cake-small.png</iconUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
-      <copyright>Copyright (c) Louis Fischer 2016</copyright>
+      <copyright>Copyright (c) Cake Contributions 2016</copyright>
       <releaseNotes>Initial Release</releaseNotes>
       <tags>cake script build msdeploy webdeploy</tags>
        <dependencies>
