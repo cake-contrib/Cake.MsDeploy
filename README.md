@@ -69,11 +69,15 @@ RunTarget(target);
 ## Documention
 
 Please visit the Cake Documentation site for a list of available Aliases:
-[http://cakebuild.net/dsl/cake.msdeploy](http://cakebuild.net/dsl/cake.msdeploy)
+[http://cakebuild.net/dsl/msdeploy](http://cakebuild.net/dsl/msdeploy)
 
 ## Tests
 
 Cake.MsDeploy is covered by set of xUnit tests.
+
+## Contribution GuideLines
+
+[https://github.com/cake-build/cake/blob/develop/CONTRIBUTING.md](https://github.com/cake-build/cake/blob/develop/CONTRIBUTING.md)
 
 ## License
 

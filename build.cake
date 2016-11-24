@@ -20,6 +20,9 @@ var isPullRequest = AppVeyor.Environment.PullRequest.IsPullRequest;
 var branchName = isRunningOnAppVeyor ? EnvironmentVariable("APPVEYOR_REPO_BRANCH") : GitBranchCurrent(DirectoryPath.FromString(".")).FriendlyName;
 var isMasterBranch = System.String.Equals("master", branchName, System.StringComparison.OrdinalIgnoreCase);
 
+var isTagCommit = false;
+var tagName = bool.TryParse(EnvironmentVariable("APPVEYOR_REPO_TAG"), out isTagCommit) ? (isTagCommit ? EnvironmentVariable("APPVEYOR_REPO_TAG_NAME") : string.Empty) : string.Empty;
+
 var releaseNotes = ParseReleaseNotes("./ReleaseNotes.md");
 
 var buildNumber = AppVeyor.Environment.Build.Number;
