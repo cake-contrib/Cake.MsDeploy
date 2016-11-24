@@ -139,8 +139,8 @@ namespace Cake.MsDeploy
             // SkipDirectives ?
             if (settings.SkipDirectives != null && settings.SkipDirectives.Any())
             {
-                foreach (var replacmentRule in settings.ReplacementRules)
-                    builder.Append(replacmentRule.ToCommandLineArgument());
+                foreach (var skipDirective in settings.SkipDirectives)
+                    builder.Append(skipDirective.ToCommandLineArgument());
             }
 
             // EnableSkipDirective?
