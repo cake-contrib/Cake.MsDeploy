@@ -66,7 +66,7 @@ namespace Cake.MsDeploy
             var builder = new ProcessArgumentBuilder();
 
             // Operation or Verb 
-            builder.Append("verb:{0}", settings.Verb.ToString().ToLower());
+            builder.Append("-verb:{0}", settings.Verb.ToString().ToLower());
 
             // Source ?
             if(settings.Source != null)            
