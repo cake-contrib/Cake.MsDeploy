@@ -157,6 +157,7 @@ Task("Publish-Nuget")
     .WithCriteria(() => isRunningOnAppVeyor)
     .WithCriteria(() => !isPullRequest)
     .WithCriteria(() => isMasterBranch)
+    .WithCriteria(() => isTagCommit)
     .Does(() =>
 {
     var apiKey = EnvironmentVariable("NUGET_API_KEY");

@@ -1,4 +1,4 @@
-## New in 0.1.3 (Released 11/23/2016)
+## New in 0.1.4 (Released 11/24/2016)
 - Fixed Unrecognized argument 'verb:sync. All arguments must begin with " error - thanks @ecampidoglio
 - Fixed link to reference to Cake Documentation website link
 - Add Contributions guide link
