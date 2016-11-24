@@ -1,9 +1,13 @@
 # Cake.MsDeploy
 
 Cake.MsDeploy is an Addin that extends [Cake](http://cakebuild.net/) for executing commands with the MsDeploy.exe (Web Deploy) command line interface (cli). 
-In order to use this extension, [MsDeploy v3.6](https://www.microsoft.com/en-us/download/details.aspx?id=43717) will already have to be installed on the computer the cake build script is being executed on.
+In order to use this extension, [MsDeploy v3.6](https://www.microsoft.com/en-us/download/details.aspx?id=43717) will already have to be installed on the computer the cake build script is being executed on.  
+
+Release notes can be found [here](ReleaseNotes.md).
 
 ## Build Status
+Continuous Integration is provided by [AppVeyor](https://www.appveyor.com).  
+The build can be found at [https://ci.appveyor.com/project/cakecontrib/cake-msdeploy](https://ci.appveyor.com/project/cakecontrib/cake-msdeploy).
 
 ![AppVeyor](https://ci.appveyor.com/api/projects/status/github/cake-contrib/Cake.MsDeploy)
 
@@ -68,7 +72,7 @@ RunTarget(target);
 
 ## Documention
 
-Please visit the Cake Documentation site for a list of available Aliases:
+Please visit the Cake Documentation site for a list of available aliases:  
 [http://cakebuild.net/dsl/msdeploy](http://cakebuild.net/dsl/msdeploy)
 
 ## Tests
@@ -81,6 +85,6 @@ Cake.MsDeploy is covered by set of xUnit tests.
 
 ## License
 
-Copyright (c) 2016 Cake Contributions Organization
+Copyright (c) 2016 Cake Contributions Organization  
 
 Cake.MsDeploy is provided as-is under the MIT license. For more information see [LICENSE](https://github.com/cake-contrib/Cake.MsDeploy/blob/master/LICENSE).

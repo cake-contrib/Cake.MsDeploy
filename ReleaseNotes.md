@@ -1,3 +1,9 @@
+## New in 0.1.5 (Released 11/24/2016)
+- Fixed #8 SkipDirectives are never appended to the arguments - thanks @calaa
+- Added link to release notes on main ReadMe file
+- Added link to CI build project on AppVeyor
+- Update license with cake-contrib name
+
 ## New in 0.1.4 (Released 11/24/2016)
 - Fixed Unrecognized argument 'verb:sync. All arguments must begin with " error - thanks @ecampidoglio
 - Fixed link to reference to Cake Documentation website link
