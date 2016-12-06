@@ -9,7 +9,7 @@
             <para>
             Contains functionality for working with the MsDeploy.exe (Web Deploy) command line interface (cli).</para>
             <para>
-            In order to use the commands for this alias, MsDeploy v3.6 will already have to be installed on the machine the Cake Script is being executed.
+            MsDeploy v3.6 will already have to be installed on the machine the Cake Script is being executed on.
             </para>    
             See also https://www.microsoft.com/en-us/download/details.aspx?id=43717 
             </summary>
@@ -29,14 +29,14 @@
                      RetryInterval = 5000,
                      Source = new PackageProvider
                      {
-                         Direction = MsDeploy.Providers.Direction.source,
+                         Direction = Direction.source,
                          Path = "./src/Application.zip"
                      },
                      Destination = new AutoProvider
                      {
-                         Direction = MsDeploy.Providers.Direction.dest,
+                         Direction = Direction.dest,
                          IncludeAcls = false,
-                         AuthenticationType = MsDeploy.Providers.AuthenticationScheme.NTLM,
+                         AuthenticationType = AuthenticationScheme.NTLM,
                          ComputerName = "cake.computerName.com",
                          TempAgent = true
                       },

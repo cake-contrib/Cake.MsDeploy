@@ -1,3 +1,7 @@
+## New in 0.1.6 (Released 12/06/2016)
+- Fixed issue with presync and postsync command
+- Fixed reference issue with msdeploy example alias
+
 ## New in 0.1.5 (Released 11/24/2016)
 - Fixed #8 SkipDirectives are never appended to the arguments - thanks @calaa
 - Added link to release notes on main ReadMe file

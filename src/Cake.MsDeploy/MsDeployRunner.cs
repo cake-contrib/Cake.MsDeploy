@@ -181,11 +181,11 @@ namespace Cake.MsDeploy
 
             // PreSyncCommand ?
             if (!string.IsNullOrWhiteSpace(settings.PreSyncCommand))
-                builder.Append("-preSync:\"{0}\"", settings.PreSyncCommand);
+                builder.Append("-preSync:runCommand=\"{0}\"", settings.PreSyncCommand);
 
             // PreSyncCommand ?
             if (!string.IsNullOrWhiteSpace(settings.PostSyncCommand))
-                builder.Append("-postSync:\"{0}\"", settings.PostSyncCommand);
+                builder.Append("-postSync:runCommand=\"{0}\"", settings.PostSyncCommand);
 
             return builder;
         }
