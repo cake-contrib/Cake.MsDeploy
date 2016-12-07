@@ -1,3 +1,7 @@
+## New in 0.1.7 (Released 12/07/2016)
+- Update Cake.Core references to 0.17.0
+- Update Cake build script to run tests before package task
+
 ## New in 0.1.6 (Released 12/06/2016)
 - Fixed issue with presync and postsync command
 - Fixed reference issue with msdeploy example alias

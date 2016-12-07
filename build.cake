@@ -123,6 +123,7 @@ Task("Run-Unit-Tests")
 
 Task("Copy-Files")
     .IsDependentOn("Build")
+	.IsDependentOn("Run-Unit-Tests")
     .Does(() =>
 {
     CopyFileToDirectory(buildDir + "/Cake.MsDeploy.dll", binDir);
