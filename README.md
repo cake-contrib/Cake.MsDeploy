@@ -41,14 +41,14 @@ Task("MsDeploy-Package")
         RetryInterval = 5000,
         Source = new PackageProvider
         {
-            Direction = MsDeploy.Providers.Direction.source,
+            Direction = Direction.source,
             Path = "./src/Application.zip"
         },
         Destination = new AutoProvider
         {
-            Direction = MsDeploy.Providers.Direction.dest,
+            Direction = Direction.dest,
             IncludeAcls = false,
-            AuthenticationType = MsDeploy.Providers.AuthenticationScheme.NTLM,
+            AuthenticationType = AuthenticationScheme.NTLM,
             ComputerName = "cake.computerName.com",
             TempAgent = true
         },

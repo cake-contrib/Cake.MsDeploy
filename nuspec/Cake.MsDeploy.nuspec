@@ -13,7 +13,7 @@
       <iconUrl>https://raw.githubusercontent.com/cake-build/graphics/master/png/cake-small.png</iconUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <copyright>Copyright (c) Cake Contributions 2016</copyright>
-      <releaseNotes>Initial Release</releaseNotes>
+      <releaseNotes></releaseNotes>
       <tags>cake script build msdeploy webdeploy</tags>
        <dependencies>
            <dependency id="Cake.Core" version="0.17.0" />
