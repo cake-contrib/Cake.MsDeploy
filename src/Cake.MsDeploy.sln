@@ -9,12 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.MsDeploy.Tests", "Cake
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "meta", "meta", "{77CAC347-B714-4AD6-9932-328C59DC9B2B}"
 	ProjectSection(SolutionItems) = preProject
-		..\appveyor.yml = ..\appveyor.yml
-		..\build.cake = ..\build.cake
-		..\nuspec\Cake.MsDeploy.nuspec = ..\nuspec\Cake.MsDeploy.nuspec
+		..\.appveyor.yml = ..\.appveyor.yml
+		..\nuspec\nuget\Cake.MsDeploy.nuspec = ..\nuspec\nuget\Cake.MsDeploy.nuspec
 		..\LICENSE = ..\LICENSE
 		..\README.md = ..\README.md
-		..\ReleaseNotes.md = ..\ReleaseNotes.md
+		..\setup.cake = ..\setup.cake
 	EndProjectSection
 EndProject
 Global

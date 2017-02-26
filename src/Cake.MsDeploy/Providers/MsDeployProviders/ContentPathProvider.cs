@@ -34,6 +34,7 @@ namespace Cake.MsDeploy.Providers.MsDeployProviders
         /// </summary>
         public bool? SyncPackageTimeStamps { get; set; }
 
+        #region DupFinder Exclusion
         protected override void AdditionalSettings(StringBuilder sb)
         {
             if (!string.IsNullOrWhiteSpace(AppOfflineTemplate))
@@ -45,5 +46,6 @@ namespace Cake.MsDeploy.Providers.MsDeployProviders
             if (SyncPackageTimeStamps.HasValue)
                 sb.AppendFormat(",syncPackageTimeStamps={0}", SyncPackageTimeStamps);
         }
+        #endregion
     }
 }

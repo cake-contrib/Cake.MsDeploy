@@ -45,7 +45,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Cake.Testing, Version=0.17.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cake.Testing.0.17.0\lib\net45\Cake.Testing.dll</HintPath>
+      <HintPath>..\packages\Cake.Testing.0.17.1\lib\net45\Cake.Testing.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NSubstitute, Version=2.0.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
