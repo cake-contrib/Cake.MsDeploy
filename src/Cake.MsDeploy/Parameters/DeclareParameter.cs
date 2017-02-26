@@ -10,7 +10,7 @@ namespace Cake.MsDeploy.Parameters
     /// Can only be used with <seealso cref="Providers.MsDeployProviderType.package"/> or <seealso cref="Providers.MsDeployProviderType.archiveDir"/>
     /// Also see the documentation at https://technet.microsoft.com/en-us/library/dd569084(v=ws.10).aspx
     /// </summary>
-    public class DeclareParameter : IParameter
+    public class DeclareParameter : BaseParameter, IParameter
     {
         /// <summary>
         /// Name of the declared parameter
@@ -70,16 +70,7 @@ namespace Cake.MsDeploy.Parameters
                 throw new NullReferenceException("Name is required when using the DeclareParameter option.");
 
             sb.Append("-declareParam:");
-            sb.AppendFormat("name=\"{0}\"", Name);
-
-            if (Kind.HasValue)
-                sb.AppendFormat(",kind=\"{0}\"", Kind);
-
-            if (!string.IsNullOrWhiteSpace(Scope))
-                sb.AppendFormat(",scope=\"{0}\"", Scope);
-
-            if (!string.IsNullOrWhiteSpace(Match))
-                sb.AppendFormat(",match=\"{0}\"", Match);
+            this.AppendCommonParameters(sb, Name, Kind, Scope, Match);
 
             if (!string.IsNullOrWhiteSpace(DefaultValue))
                 sb.AppendFormat(",defaultValue=\"{0}\"", DefaultValue);

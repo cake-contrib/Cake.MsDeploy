@@ -55,6 +55,7 @@
     <Compile Include="IMsDeployArgument.cs" />
     <Compile Include="MsDeployRunner.cs" />
     <Compile Include="MsDeploySettings.cs" />
+    <Compile Include="Parameters\BaseParameter.cs" />
     <Compile Include="Properties\NamespaceDoc.cs" />
     <Compile Include="Parameters\DeclareParameter.cs" />
     <Compile Include="Parameters\IParameter.cs" />

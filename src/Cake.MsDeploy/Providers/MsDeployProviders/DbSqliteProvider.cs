@@ -52,6 +52,7 @@ namespace Cake.MsDeploy.Providers.MsDeployProviders
         /// </summary>
         public int? CommandTimeout { get; set; }
 
+        #region DupFinder Exclusion
         protected override void AdditionalSettings(StringBuilder sb)
         {
             if (!string.IsNullOrWhiteSpace(CreateDBConnectionString))
@@ -78,5 +79,6 @@ namespace Cake.MsDeploy.Providers.MsDeployProviders
             if (CommandTimeout.HasValue)
                 sb.AppendFormat(",commandTimeout={0}", CommandTimeout);
         }
+        #endregion
     }
 }
