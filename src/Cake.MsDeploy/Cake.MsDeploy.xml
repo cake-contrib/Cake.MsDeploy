@@ -314,11 +314,6 @@
             Command to run on the remote server after a sync operation completes
             </summary>
         </member>
-        <member name="T:Cake.MsDeploy.NamespaceDoc">
-            <summary>
-            This namespace contains MSDeploy aliases for the MSDeploy command line utility.
-            </summary>
-        </member>
         <member name="T:Cake.MsDeploy.Parameters.DeclareParameter">
             <summary>
             Used to declare a parameter during package or archive creation.
@@ -486,6 +481,11 @@
             Converts the object into its MSDeploy command line equivalent and Appends it to the stringbuilder
             </summary>
             <param name="sb">StringBuilder to apply command line to.</param>
+        </member>
+        <member name="T:Cake.MsDeploy.NamespaceDoc">
+            <summary>
+            This namespace contains MSDeploy aliases for the MSDeploy command line utility.
+            </summary>
         </member>
         <member name="T:Cake.MsDeploy.Providers.AuthenticationScheme">
             <summary>

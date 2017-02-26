@@ -61,6 +61,7 @@ namespace Cake.MsDeploy.Providers.MsDeployProviders
         /// </summary>
         public bool? IncludeSchema { get; set; }
 
+        #region DupFinder Exclusion
         protected override void AdditionalSettings(StringBuilder sb)
         {
             if (!string.IsNullOrWhiteSpace(CreateDBConnectionString))
@@ -91,5 +92,6 @@ namespace Cake.MsDeploy.Providers.MsDeployProviders
                 sb.AppendFormat(",includeSchema={0}", IncludeSchema);
 
         }
+        #endregion
     }
 }

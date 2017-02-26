@@ -7,7 +7,7 @@ namespace Cake.MsDeploy.Parameters
     /// Enables you to specify, at synchronization time, a value for parameter that you declared by using <see cref="DeclareParameter"/>
     /// Also see the documentation at https://technet.microsoft.com/en-us/library/dd569084(v=ws.10).aspx 
     /// </summary>
-    public class SetParameter : IParameter
+    public class SetParameter : BaseParameter, IParameter
     {
         /// <summary>
         /// Name of the declared parameter
@@ -63,16 +63,7 @@ namespace Cake.MsDeploy.Parameters
 
             sb.Append("-setParam:");
 
-            sb.AppendFormat("name=\"{0}\"", Name);
-
-            if (Kind.HasValue)
-                sb.AppendFormat(",kind=\"{0}\"", Kind);
-
-            if (!string.IsNullOrWhiteSpace(Scope))
-                sb.AppendFormat(",scope=\"{0}\"", Scope);
-
-            if (!string.IsNullOrWhiteSpace(Match))
-                sb.AppendFormat(",match=\"{0}\"", Match);
+            this.AppendCommonParameters(sb, Name, Kind, Scope, Match);
 
             if (!string.IsNullOrWhiteSpace(Value))
                 sb.AppendFormat(",value=\"{0}\"", Value);
