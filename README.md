@@ -1,90 +1,33 @@
 # Cake.MsDeploy
 
 Cake.MsDeploy is an Addin that extends [Cake](http://cakebuild.net/) for executing commands with the MsDeploy.exe (Web Deploy) command line interface (cli). 
-In order to use this extension, [MsDeploy v3.6](https://www.microsoft.com/en-us/download/details.aspx?id=43717) will already have to be installed on the computer the cake build script is being executed on.  
+In order to use this extension, [MsDeploy v3.6](https://www.microsoft.com/en-us/download/details.aspx?id=43717) will already have to be installed on the computer the cake build script is being executed on.
 
-Release notes can be found [here](ReleaseNotes.md).
+[![License](http://img.shields.io/:license-mit-blue.svg)](http://cake-contrib.mit-license.org)
+
+## Information
+
+||Stable|Pre-release|
+|:--:|:--:|:--:|
+|GitHub Release|-|[![GitHub release](https://img.shields.io/github/release/cake-contrib/Cake.MsDeploy.svg)](https://github.com/cake-contrib/Cake.MsDeploy/releases/latest)|
+|NuGet|[![NuGet](https://img.shields.io/nuget/v/Cake.Http.svg)](https://www.nuget.org/packages/Cake.MsDeploy)|[![NuGet](https://img.shields.io/nuget/vpre/Cake.Http.svg)](https://www.nuget.org/packages/Cake.MsDeploy)|
 
 ## Build Status
-Continuous Integration is provided by [AppVeyor](https://www.appveyor.com).  
-The build can be found at [https://ci.appveyor.com/project/cakecontrib/cake-msdeploy](https://ci.appveyor.com/project/cakecontrib/cake-msdeploy).
 
-![AppVeyor](https://ci.appveyor.com/api/projects/status/github/cake-contrib/Cake.MsDeploy)
+|Develop|Master|
+|:--:|:--:|
+|[![Build status](https://ci.appveyor.com/api/projects/status/oqn617679k8fy2q6/branch/develop?svg=true)](https://ci.appveyor.com/project/cakecontrib/cake-msdeploy/branch/develop)|[![Build status](https://ci.appveyor.com/api/projects/status/oqn617679k8fy2q6/branch/develop?svg=true)](https://ci.appveyor.com/project/cakecontrib/cake-msdeploy/branch/master)|
 
-## Referencing
+## Code Coverage
 
-You can reference Cake.MsDeploy in your build script as a cake addin:
-```cake
-#addin "Cake.MsDeploy"
-```  
+[![Coverage Status](https://coveralls.io/repos/github/cake-contrib/Cake.MsDeploy/badge.svg?branch=develop)](https://coveralls.io/github/cake-contrib/Cake.MsDeploy?branch=develop)
 
-or nuget reference:
+## Quick Links
 
-```cake
-#addin "nuget:https://www.nuget.org/api/v2?package=Cake.MsDeploy"
-```
+- [Documentation](https://cake-contrib.github.io/Cake.MsDeploy)
 
-## Usage
+## Chat Room
 
-```csharp
-#addin "Cake.MsDeploy"
+Come join in the conversation about Cake.MsDeploy in our Gitter Chat Room
 
-var target = Argument("target", "Default");
-
-Task("MsDeploy-Package")
-  .Does(() =>
-{
-    MsDeploy(new MsDeploySettings
-    {
-        Verb = Operation.Sync,
-        RetryAttempts = 5,
-        RetryInterval = 5000,
-        Source = new PackageProvider
-        {
-            Direction = Direction.source,
-            Path = "./src/Application.zip"
-        },
-        Destination = new AutoProvider
-        {
-            Direction = Direction.dest,
-            IncludeAcls = false,
-            AuthenticationType = AuthenticationScheme.NTLM,
-            ComputerName = "cake.computerName.com",
-            TempAgent = true
-        },
-        AllowUntrusted = true,
-        PreSyncCommand = "%windir%\\System32\\inetsrv\\appcmd.exe stop APPPOOL NameOfAppPool",
-        PostSyncCommand = "%windir%\\System32\\inetsrv\\appcmd.exe start APPPOOL NameOfAppPool",
-        WhatIf = true,
-        SetParams = new List<SetParameter>
-        {
-            new SetParameter
-            {
-                Name = "IIS Web Application Name",
-                Value = "www.cake.com"
-            }
-        }
-    });
-});
-
-RunTarget(target);
-```
-
-## Documention
-
-Please visit the Cake Documentation site for a list of available aliases:  
-[http://cakebuild.net/dsl/msdeploy](http://cakebuild.net/dsl/msdeploy)
-
-## Tests
-
-Cake.MsDeploy is covered by set of xUnit tests.
-
-## Contribution GuideLines
-
-[https://github.com/cake-build/cake/blob/develop/CONTRIBUTING.md](https://github.com/cake-build/cake/blob/develop/CONTRIBUTING.md)
-
-## License
-
-Copyright (c) 2016 Cake Contributions Organization  
-
-Cake.MsDeploy is provided as-is under the MIT license. For more information see [LICENSE](https://github.com/cake-contrib/Cake.MsDeploy/blob/master/LICENSE).
+[![Join the chat at https://gitter.im/cake-contrib/Lobby](https://badges.gitter.im/cake-contrib/Lobby.svg)](https://gitter.im/cake-contrib/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
