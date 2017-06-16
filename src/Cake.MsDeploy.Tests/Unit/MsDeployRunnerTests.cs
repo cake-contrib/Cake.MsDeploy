@@ -91,6 +91,7 @@ namespace Cake.MsDeploy.Tests.Unit
                         TempAgent = true
                     },
                     AllowUntrusted = true,
+                    UseCheckSum = true,
                     PreSyncCommand = "%windir%\\System32\\inetsrv\\appcmd.exe stop APPPOOL NameOfAppPool",
                     PostSyncCommand = "%windir%\\System32\\inetsrv\\appcmd.exe start APPPOOL NameOfAppPool",
                     WhatIf = true,
@@ -108,7 +109,7 @@ namespace Cake.MsDeploy.Tests.Unit
                 var result = fixture.Run();
 
                 // Then
-                Assert.Equal("-verb:sync -source:package=\"./src/Application.zip\" -dest:auto,computerName=\"cake.computerName.com\",authtype=NTLM,includeAcls=false,tempAgent=true -setParam:name=\"IIS Web Application Name\",value=\"www.cake.com\" -retryAttempts:5 -retryInterval:5000 -whatif -allowUntrusted -preSync:runCommand=\"%windir%\\System32\\inetsrv\\appcmd.exe stop APPPOOL NameOfAppPool\" -postSync:runCommand=\"%windir%\\System32\\inetsrv\\appcmd.exe start APPPOOL NameOfAppPool\"", result.Args);
+                Assert.Equal("-verb:sync -source:package=\"./src/Application.zip\" -dest:auto,computerName=\"cake.computerName.com\",authtype=NTLM,includeAcls=false,tempAgent=true -setParam:name=\"IIS Web Application Name\",value=\"www.cake.com\" -retryAttempts:5 -retryInterval:5000 -whatif -allowUntrusted -useCheckSum -preSync:runCommand=\"%windir%\\System32\\inetsrv\\appcmd.exe stop APPPOOL NameOfAppPool\" -postSync:runCommand=\"%windir%\\System32\\inetsrv\\appcmd.exe start APPPOOL NameOfAppPool\"", result.Args);
             }
         }
     }
