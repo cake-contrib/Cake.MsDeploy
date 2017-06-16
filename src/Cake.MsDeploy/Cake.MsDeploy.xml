@@ -299,6 +299,13 @@
             Allow untrusted server certificate when using SSL.
             </summary>
         </member>
+        <member name="P:Cake.MsDeploy.MsDeploySettings.UseCheckSum">
+            <summary>
+            This setting is useful when you want to copy only 
+            the files whose content has changed, and ignore 
+            files that have the same content but different time stamps.
+            </summary>
+        </member>
         <member name="P:Cake.MsDeploy.MsDeploySettings.ShowSecure">
              <summary>
             true to show secure attributes in XML output instead of hiding them

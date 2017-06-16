@@ -171,9 +171,13 @@ namespace Cake.MsDeploy
             if (settings.Xml.GetValueOrDefault(false))
                 builder.Append("-xml");
 
-            // Xml ?
+            // AllowUntrusted ?
             if (settings.AllowUntrusted.GetValueOrDefault(false))
                 builder.Append("-allowUntrusted");
+
+            // UseCheckSum ?
+            if (settings.UseCheckSum.GetValueOrDefault(false))
+                builder.Append("-useCheckSum");
 
             // ShowSecure?
             if (settings.ShowSecure.GetValueOrDefault(false))
