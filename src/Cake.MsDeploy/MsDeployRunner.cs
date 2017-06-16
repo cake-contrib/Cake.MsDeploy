@@ -175,7 +175,7 @@ namespace Cake.MsDeploy
             if (settings.AllowUntrusted.GetValueOrDefault(false))
                 builder.Append("-allowUntrusted");
 
-            // AllowUntrusted ?
+            // UseCheckSum ?
             if (settings.UseCheckSum.GetValueOrDefault(false))
                 builder.Append("-useCheckSum");
 
