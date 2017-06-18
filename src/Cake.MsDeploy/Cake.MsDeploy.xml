@@ -22,6 +22,7 @@
              <param name="settings">The MSDeploy settings</param>
              <example>
              <code>
+            
                  var settings = new MsDeploySettings
                  {
                      Verb = Operation.Sync,
@@ -30,7 +31,7 @@
                      Source = new PackageProvider
                      {
                          Direction = Direction.source,
-                         Path = "./src/Application.zip"
+                         Path = MakeAbsolute(File("./artifacts/Application.zip")).ToString()
                      },
                      Destination = new AutoProvider
                      {
@@ -297,6 +298,13 @@
         <member name="P:Cake.MsDeploy.MsDeploySettings.AllowUntrusted">
             <summary>
             Allow untrusted server certificate when using SSL.
+            </summary>
+        </member>
+        <member name="P:Cake.MsDeploy.MsDeploySettings.UseCheckSum">
+            <summary>
+            This setting is useful when you want to copy only 
+            the files whose content has changed, and ignore 
+            files that have the same content but different time stamps.
             </summary>
         </member>
         <member name="P:Cake.MsDeploy.MsDeploySettings.ShowSecure">

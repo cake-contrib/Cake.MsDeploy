@@ -7,7 +7,7 @@ In order to use this extension, [MsDeploy v3.6](https://www.microsoft.com/en-us/
 
 ## Information
 
-||Stable|Pre-release|
+| |Stable|Pre-release|
 |:--:|:--:|:--:|
 |GitHub Release|-|[![GitHub release](https://img.shields.io/github/release/cake-contrib/Cake.MsDeploy.svg)](https://github.com/cake-contrib/Cake.MsDeploy/releases/latest)|
 |NuGet|[![NuGet](https://img.shields.io/nuget/v/Cake.Http.svg)](https://www.nuget.org/packages/Cake.MsDeploy)|[![NuGet](https://img.shields.io/nuget/vpre/Cake.Http.svg)](https://www.nuget.org/packages/Cake.MsDeploy)|

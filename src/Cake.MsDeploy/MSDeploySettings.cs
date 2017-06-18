@@ -134,6 +134,13 @@ namespace Cake.MsDeploy
         public bool? AllowUntrusted { get; set; }
 
         /// <summary>
+        /// This setting is useful when you want to copy only 
+        /// the files whose content has changed, and ignore 
+        /// files that have the same content but different time stamps.
+        /// </summary>
+        public bool? UseCheckSum { get; set; }
+
+        /// <summary>
         ///true to show secure attributes in XML output instead of hiding them
         /// </summary>
         public bool? ShowSecure { get; set; }

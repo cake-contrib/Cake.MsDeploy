@@ -29,6 +29,7 @@ namespace Cake.MsDeploy
         /// <param name="settings">The MSDeploy settings</param>
         /// <example>
         /// <code>
+        ///
         ///     var settings = new MsDeploySettings
         ///     {
         ///         Verb = Operation.Sync,
@@ -37,7 +38,7 @@ namespace Cake.MsDeploy
         ///         Source = new PackageProvider
         ///         {
         ///             Direction = Direction.source,
-        ///             Path = "./src/Application.zip"
+        ///             Path = MakeAbsolute(File("./artifacts/Application.zip")).ToString()
         ///         },
         ///         Destination = new AutoProvider
         ///         {

@@ -60,7 +60,7 @@ namespace Xunit
             int actualCount = elements.Length;
 
             if (expectedCount != actualCount)
-                throw new CollectionException(expectedCount, actualCount);
+                throw new CollectionException(collection, expectedCount, actualCount);
 
             for (int idx = 0; idx < actualCount; idx++)
             {
@@ -70,7 +70,7 @@ namespace Xunit
                 }
                 catch (Exception ex)
                 {
-                    throw new CollectionException(expectedCount, actualCount, idx, ex);
+                    throw new CollectionException(collection, expectedCount, actualCount, idx, ex);
                 }
             }
         }
@@ -183,8 +183,16 @@ namespace Xunit
         {
             Assert.GuardArgumentNotNull("collection", collection);
 
-            if (collection.GetEnumerator().MoveNext())
-                throw new EmptyException();
+            var enumerator = collection.GetEnumerator();
+            try
+            {
+                if (enumerator.MoveNext())
+                    throw new EmptyException();
+            }
+            finally
+            {
+                (enumerator as IDisposable)?.Dispose();
+            }
         }
 
         /// <summary>
@@ -196,7 +204,7 @@ namespace Xunit
         /// <exception cref="EqualException">Thrown when the objects are not equal</exception>
         public static void Equal<T>(IEnumerable<T> expected, IEnumerable<T> actual)
         {
-            Equal<IEnumerable<T>>(expected, actual, GetEqualityComparer<IEnumerable<T>>(true));
+            Equal<IEnumerable<T>>(expected, actual, GetEqualityComparer<IEnumerable<T>>());
         }
 
         /// <summary>
@@ -209,7 +217,7 @@ namespace Xunit
         /// <exception cref="EqualException">Thrown when the objects are not equal</exception>
         public static void Equal<T>(IEnumerable<T> expected, IEnumerable<T> actual, IEqualityComparer<T> comparer)
         {
-            Equal<IEnumerable<T>>(expected, actual, GetEqualityComparer<IEnumerable<T>>(true, new AssertEqualityComparerAdapter<T>(comparer)));
+            Equal<IEnumerable<T>>(expected, actual, GetEqualityComparer<IEnumerable<T>>(new AssertEqualityComparerAdapter<T>(comparer)));
         }
 
         /// <summary>
@@ -222,8 +230,16 @@ namespace Xunit
         {
             Assert.GuardArgumentNotNull("collection", collection);
 
-            if (!collection.GetEnumerator().MoveNext())
-                throw new NotEmptyException();
+            var enumerator = collection.GetEnumerator();
+            try
+            {
+                if (!enumerator.MoveNext())
+                    throw new NotEmptyException();
+            }
+            finally
+            {
+                (enumerator as IDisposable)?.Dispose();
+            }
         }
 
         /// <summary>
@@ -235,7 +251,7 @@ namespace Xunit
         /// <exception cref="NotEqualException">Thrown when the objects are equal</exception>
         public static void NotEqual<T>(IEnumerable<T> expected, IEnumerable<T> actual)
         {
-            NotEqual<IEnumerable<T>>(expected, actual, GetEqualityComparer<IEnumerable<T>>(true));
+            NotEqual<IEnumerable<T>>(expected, actual, GetEqualityComparer<IEnumerable<T>>());
         }
 
         /// <summary>
@@ -248,7 +264,7 @@ namespace Xunit
         /// <exception cref="NotEqualException">Thrown when the objects are equal</exception>
         public static void NotEqual<T>(IEnumerable<T> expected, IEnumerable<T> actual, IEqualityComparer<T> comparer)
         {
-            NotEqual<IEnumerable<T>>(expected, actual, GetEqualityComparer<IEnumerable<T>>(true, new AssertEqualityComparerAdapter<T>(comparer)));
+            NotEqual<IEnumerable<T>>(expected, actual, GetEqualityComparer<IEnumerable<T>>(new AssertEqualityComparerAdapter<T>(comparer)));
         }
 
         /// <summary>
