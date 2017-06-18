@@ -28,7 +28,7 @@ Task("MsDeploy-Package")
         Source = new PackageProvider
         {
             Direction = Direction.source,
-            Path = "./src/Application.zip"
+            Path = MakeAbsolute(File("./artifacts/Application.zip")).ToString()
         },
         Destination = new AutoProvider
         {
