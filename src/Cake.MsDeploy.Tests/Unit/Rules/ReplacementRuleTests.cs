@@ -31,6 +31,7 @@ namespace Cake.MsDeploy.Tests.Unit.Rules
                 var sb = new StringBuilder();
 
                 // When --> Then
+                
                 Assert.Throws<NullReferenceException>(() => { rule.AppendCommandLineArgument(sb); });
             }
 
