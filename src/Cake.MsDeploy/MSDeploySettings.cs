@@ -148,12 +148,12 @@ namespace Cake.MsDeploy
         /// <summary>
         /// Command to run on the remote server before a sync operation starts
         /// </summary>
-        public string PreSyncCommand { get; set; }
+        public CommandProvider PreSyncCommand { get; set; }
 
         /// <summary>
         /// Command to run on the remote server after a sync operation completes
         /// </summary>
-        public string PostSyncCommand { get; set; }
+        public CommandProvider PostSyncCommand { get; set; }
 
     }
 }
