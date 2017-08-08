@@ -140,12 +140,12 @@ namespace Cake.MsDeploy.Tests.Unit
 					UseCheckSum = true,
 					PreSyncCommand = new CommandProvider
 					{
-						Command = "%windir%\\System32\\inetsrv\\appcmd.exe stop APPPOOL NameOfAppPool",
+						Path = "%windir%\\System32\\inetsrv\\appcmd.exe stop APPPOOL NameOfAppPool",
 						WaitInterval = 60000
 					},
 					PostSyncCommand = new CommandProvider
 					{
-						Command = "%windir%\\System32\\inetsrv\\appcmd.exe start APPPOOL NameOfAppPool",
+						Path = "%windir%\\System32\\inetsrv\\appcmd.exe start APPPOOL NameOfAppPool",
 						WaitInterval = 15000
 					},
 					WhatIf = true,

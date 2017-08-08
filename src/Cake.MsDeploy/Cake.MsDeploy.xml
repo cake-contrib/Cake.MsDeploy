@@ -828,6 +828,15 @@
             msdeploy.exe -verb:dump -source:certStoreSettings
             </code>
         </member>
+        <member name="T:Cake.MsDeploy.Providers.MsDeployProviders.CommandProvider">
+            <summary>
+            Runs a command on the destination when preSync/postSync is called.
+            </summary>
+            <code>
+            -preSync:runCommand="net stop MyService",waitInterval=60000
+            -postSync:runCommand="net start MyService",waitInterval=60000
+            </code>
+        </member>
         <member name="T:Cake.MsDeploy.Providers.MsDeployProviders.ComObject32Provider">
             <summary>
             32-bit COM object
@@ -1798,50 +1807,6 @@
         <member name="P:Cake.MsDeploy.Providers.MsDeployProviders.AppHostAuthOverrideProvider.NetFxVersion">
             <summary>
             Used to specify which .NET framework version to use with given provider.
-            </summary>
-        </member>
-        <member name="T:Cake.MsDeploy.Providers.CommandProvider">
-            <summary>
-            Runs a command on the destination when preSync/postSync is called.
-            </summary>
-            <code>
-            -preSync:runCommand="net stop MyService",waitInterval=60000
-            -postSync:runCommand="net start MyService",waitInterval=60000
-            </code>
-        </member>
-        <member name="P:Cake.MsDeploy.Providers.CommandProvider.Command">
-             <summary>
-            Command value for the 'runCommand' setting.
-             </summary>
-        </member>
-        <member name="P:Cake.MsDeploy.Providers.CommandProvider.DontUseCommandExe">
-            <summary>
-            A true or false value for the 'dontUseCommandExe' setting.
-            </summary>
-        </member>
-        <member name="P:Cake.MsDeploy.Providers.CommandProvider.DontUseJobObject">
-            <summary>
-            A true or false value for the 'dontUseJobObject' setting.
-            </summary>
-        </member>
-        <member name="P:Cake.MsDeploy.Providers.CommandProvider.WaitAttempts">
-            <summary>
-            An integer value for the 'waitAttempts' setting.
-            </summary>
-        </member>
-        <member name="P:Cake.MsDeploy.Providers.CommandProvider.WaitInterval">
-            <summary>
-            An integer value for the 'waitInterval' setting.
-            </summary>
-        </member>
-        <member name="P:Cake.MsDeploy.Providers.CommandProvider.SuccessReturnCodes">
-            <summary>
-            A semicolon (;) separated list of return values that will be treated as a success for the command. If specified, all other return values will be treated as errors.
-            </summary>
-        </member>
-        <member name="M:Cake.MsDeploy.Providers.CommandProvider.ToCommandLineArgument">
-            <summary>
-            Converts the Provider into its commmand line argument
             </summary>
         </member>
         <member name="T:Cake.MsDeploy.Operation">

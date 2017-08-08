@@ -3,15 +3,16 @@ using Cake.Core.Tooling;
 using Cake.MsDeploy.Directives;
 using Cake.MsDeploy.Parameters;
 using Cake.MsDeploy.Providers;
+using Cake.MsDeploy.Providers.MsDeployProviders;
 using Cake.MsDeploy.Rules;
 using System.Collections.Generic;
 
 namespace Cake.MsDeploy
 {
-    /// <summary>
-    /// Contains settings used by <see cref="MsDeployRunner" />.
-    /// </summary>
-    public class MsDeploySettings : ToolSettings
+	/// <summary>
+	/// Contains settings used by <see cref="MsDeployRunner" />.
+	/// </summary>
+	public class MsDeploySettings : ToolSettings
     {
         /// <summary>
         /// Action to perform (required).
