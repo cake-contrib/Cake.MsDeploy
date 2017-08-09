@@ -107,11 +107,17 @@ namespace Cake.MsDeploy
 
             // EnableLinks ?
             if (settings.EnableLinks != null && settings.EnableLinks.Any())
-                builder.Append("-enableLink:{0}", string.Join<string>(",", settings.EnableLinks));
+			{
+				foreach (var enableLink in settings.EnableLinks)
+					builder.Append("-enableLink:{0}", enableLink);
+			}
 
-            // DisableLinks ?
-            if (settings.DisableLinks != null && settings.DisableLinks.Any())
-                builder.Append("-disableLink:{0}", string.Join<string>(",", settings.DisableLinks));
+			// DisableLinks ?
+			if (settings.DisableLinks != null && settings.DisableLinks.Any())
+			{
+				foreach (var disableLink in settings.EnableLinks)
+					builder.Append("-disableLink:{0}", disableLink);
+			}
 
             // EnableRules ?
             if (settings.EnableRules != null && settings.EnableRules.Any())
