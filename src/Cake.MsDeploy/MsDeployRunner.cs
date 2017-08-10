@@ -115,7 +115,7 @@ namespace Cake.MsDeploy
 			// DisableLinks ?
 			if (settings.DisableLinks != null && settings.DisableLinks.Any())
 			{
-				foreach (var disableLink in settings.EnableLinks)
+				foreach (var disableLink in settings.DisableLinks)
 					builder.Append("-disableLink:{0}", disableLink);
 			}
 
