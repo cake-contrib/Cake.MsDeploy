@@ -3,15 +3,16 @@ using Cake.Core.Tooling;
 using Cake.MsDeploy.Directives;
 using Cake.MsDeploy.Parameters;
 using Cake.MsDeploy.Providers;
+using Cake.MsDeploy.Providers.MsDeployProviders;
 using Cake.MsDeploy.Rules;
 using System.Collections.Generic;
 
 namespace Cake.MsDeploy
 {
-    /// <summary>
-    /// Contains settings used by <see cref="MsDeployRunner" />.
-    /// </summary>
-    public class MsDeploySettings : ToolSettings
+	/// <summary>
+	/// Contains settings used by <see cref="MsDeployRunner" />.
+	/// </summary>
+	public class MsDeploySettings : ToolSettings
     {
         /// <summary>
         /// Action to perform (required).
@@ -148,12 +149,12 @@ namespace Cake.MsDeploy
         /// <summary>
         /// Command to run on the remote server before a sync operation starts
         /// </summary>
-        public string PreSyncCommand { get; set; }
+        public CommandProvider PreSyncCommand { get; set; }
 
         /// <summary>
         /// Command to run on the remote server after a sync operation completes
         /// </summary>
-        public string PostSyncCommand { get; set; }
+        public CommandProvider PostSyncCommand { get; set; }
 
     }
 }

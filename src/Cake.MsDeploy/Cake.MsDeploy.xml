@@ -828,6 +828,15 @@
             msdeploy.exe -verb:dump -source:certStoreSettings
             </code>
         </member>
+        <member name="T:Cake.MsDeploy.Providers.MsDeployProviders.CommandProvider">
+            <summary>
+            Runs a command on the destination when preSync/postSync is called.
+            </summary>
+            <code>
+            -preSync:runCommand="net stop MyService",waitInterval=60000
+            -postSync:runCommand="net start MyService",waitInterval=60000
+            </code>
+        </member>
         <member name="T:Cake.MsDeploy.Providers.MsDeployProviders.ComObject32Provider">
             <summary>
             32-bit COM object

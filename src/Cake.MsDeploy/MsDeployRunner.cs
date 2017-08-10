@@ -107,11 +107,17 @@ namespace Cake.MsDeploy
 
             // EnableLinks ?
             if (settings.EnableLinks != null && settings.EnableLinks.Any())
-                builder.Append("-enableLink:{0}", string.Join<string>(",", settings.EnableLinks));
+			{
+				foreach (var enableLink in settings.EnableLinks)
+					builder.Append("-enableLink:{0}", enableLink);
+			}
 
-            // DisableLinks ?
-            if (settings.DisableLinks != null && settings.DisableLinks.Any())
-                builder.Append("-disableLink:{0}", string.Join<string>(",", settings.DisableLinks));
+			// DisableLinks ?
+			if (settings.DisableLinks != null && settings.DisableLinks.Any())
+			{
+				foreach (var disableLink in settings.EnableLinks)
+					builder.Append("-disableLink:{0}", disableLink);
+			}
 
             // EnableRules ?
             if (settings.EnableRules != null && settings.EnableRules.Any())
@@ -183,15 +189,15 @@ namespace Cake.MsDeploy
             if (settings.ShowSecure.GetValueOrDefault(false))
                 builder.Append("-showSecure");
 
-            // PreSyncCommand ?
-            if (!string.IsNullOrWhiteSpace(settings.PreSyncCommand))
-                builder.Append("-preSync:runCommand=\"{0}\"", settings.PreSyncCommand);
+			// PreSyncCommand ?
+			if (settings.PreSyncCommand != null)
+				builder.Append("-preSync:{0}", settings.PreSyncCommand.ToCommandLineArgument());
 
-            // PreSyncCommand ?
-            if (!string.IsNullOrWhiteSpace(settings.PostSyncCommand))
-                builder.Append("-postSync:runCommand=\"{0}\"", settings.PostSyncCommand);
+			// PostSyncCommand ?
+			if (settings.PostSyncCommand != null)
+				builder.Append("-postSync:{0}", settings.PostSyncCommand.ToCommandLineArgument());
 
-            return builder;
+			return builder;
         }
 
         /// <summary>
