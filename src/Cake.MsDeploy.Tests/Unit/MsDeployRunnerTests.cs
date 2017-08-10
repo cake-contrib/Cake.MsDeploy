@@ -1,4 +1,5 @@
 ﻿using Cake.MsDeploy.Parameters;
+using Cake.MsDeploy.Providers;
 using Cake.MsDeploy.Providers.MsDeployProviders;
 using Cake.MsDeploy.Tests.Fixture;
 using Cake.Testing;
@@ -111,6 +112,59 @@ namespace Cake.MsDeploy.Tests.Unit
                 // Then
                 Assert.Equal("-verb:sync -source:package=\"./src/Application.zip\" -dest:auto,computerName=\"cake.computerName.com\",authtype=NTLM,includeAcls=false,tempAgent=true -setParam:name=\"IIS Web Application Name\",value=\"www.cake.com\" -retryAttempts:5 -retryInterval:5000 -whatif -allowUntrusted -useCheckSum -preSync:runCommand=\"%windir%\\System32\\inetsrv\\appcmd.exe stop APPPOOL NameOfAppPool\" -postSync:runCommand=\"%windir%\\System32\\inetsrv\\appcmd.exe start APPPOOL NameOfAppPool\"", result.Args);
             }
-        }
+
+			[Fact]
+			public void Should_Add_Command_Provider_Additional_Settings()
+			{
+				// Given
+				var fixture = new MsDeployFixture();
+				fixture.Settings = new MsDeploySettings
+				{
+					Verb = Operation.Sync,
+					RetryAttempts = 5,
+					RetryInterval = 5000,
+					Source = new PackageProvider
+					{
+						Direction = MsDeploy.Providers.Direction.source,
+						Path = "./src/Application.zip"
+					},
+					Destination = new AutoProvider
+					{
+						Direction = MsDeploy.Providers.Direction.dest,
+						IncludeAcls = false,
+						AuthenticationType = MsDeploy.Providers.AuthenticationScheme.NTLM,
+						ComputerName = "cake.computerName.com",
+						TempAgent = true
+					},
+					AllowUntrusted = true,
+					UseCheckSum = true,
+					PreSyncCommand = new CommandProvider
+					{
+						Path = "%windir%\\System32\\inetsrv\\appcmd.exe stop APPPOOL NameOfAppPool",
+						WaitInterval = 60000
+					},
+					PostSyncCommand = new CommandProvider
+					{
+						Path = "%windir%\\System32\\inetsrv\\appcmd.exe start APPPOOL NameOfAppPool",
+						WaitInterval = 15000
+					},
+					WhatIf = true,
+					SetParams = new List<SetParameter>
+					{
+						new SetParameter
+						{
+						   Name = "IIS Web Application Name",
+						   Value = "www.cake.com"
+						}
+					}
+				};
+
+				// When
+				var result = fixture.Run();
+
+				// Then
+				Assert.Equal("-verb:sync -source:package=\"./src/Application.zip\" -dest:auto,computerName=\"cake.computerName.com\",authtype=NTLM,includeAcls=false,tempAgent=true -setParam:name=\"IIS Web Application Name\",value=\"www.cake.com\" -retryAttempts:5 -retryInterval:5000 -whatif -allowUntrusted -useCheckSum -preSync:runCommand=\"%windir%\\System32\\inetsrv\\appcmd.exe stop APPPOOL NameOfAppPool\",waitInterval=60000 -postSync:runCommand=\"%windir%\\System32\\inetsrv\\appcmd.exe start APPPOOL NameOfAppPool\",waitInterval=15000", result.Args);
+			}
+		}
     }
 }

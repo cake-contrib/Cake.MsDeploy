@@ -189,15 +189,15 @@ namespace Cake.MsDeploy
             if (settings.ShowSecure.GetValueOrDefault(false))
                 builder.Append("-showSecure");
 
-            // PreSyncCommand ?
-            if (!string.IsNullOrWhiteSpace(settings.PreSyncCommand))
-                builder.Append("-preSync:runCommand=\"{0}\"", settings.PreSyncCommand);
+			// PreSyncCommand ?
+			if (settings.PreSyncCommand != null)
+				builder.Append("-preSync:{0}", settings.PreSyncCommand.ToCommandLineArgument());
 
-            // PreSyncCommand ?
-            if (!string.IsNullOrWhiteSpace(settings.PostSyncCommand))
-                builder.Append("-postSync:runCommand=\"{0}\"", settings.PostSyncCommand);
+			// PostSyncCommand ?
+			if (settings.PostSyncCommand != null)
+				builder.Append("-postSync:{0}", settings.PostSyncCommand.ToCommandLineArgument());
 
-            return builder;
+			return builder;
         }
 
         /// <summary>

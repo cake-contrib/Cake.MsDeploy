@@ -88,7 +88,7 @@ namespace Cake.MsDeploy.Providers
         /// Converts the object into its MSDeploy command line equivalent and Appends it to the stringbuilder
         /// </summary>
         /// <param name="sb">StringBuilder to apply command line to.</param>
-        public void AppendCommandLineArgument(StringBuilder sb)
+        public virtual void AppendCommandLineArgument(StringBuilder sb)
         {
             if (sb == null)
                 throw new ArgumentNullException(nameof(sb));

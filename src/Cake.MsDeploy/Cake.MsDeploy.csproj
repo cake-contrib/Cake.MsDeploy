@@ -81,6 +81,7 @@
     <Compile Include="Providers\MsDeployProviders\BackupSettingsProvider.cs" />
     <Compile Include="Providers\MsDeployProviders\CertProvider.cs" />
     <Compile Include="Providers\MsDeployProviders\CertStoreSettingsProvider.cs" />
+    <Compile Include="Providers\MsDeployProviders\CommandProvider.cs" />
     <Compile Include="Providers\MsDeployProviders\ComObject32Provider.cs" />
     <Compile Include="Providers\MsDeployProviders\ComObject64Provider.cs" />
     <Compile Include="Providers\MsDeployProviders\ContentPathProvider.cs" />
