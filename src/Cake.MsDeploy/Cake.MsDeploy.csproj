@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Cake.MsDeploy</RootNamespace>
     <AssemblyName>Cake.MsDeploy</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -36,9 +36,8 @@
     <NoWarn>CS0436,CS1591,CS0436,CS0168,CS0649,CS1573,CS1591,CS1572,CS0114,CS1570,CS0618,CS1587,CS1734,CS0114,CS0659,CS0612,CS0246,S1571,CS1574</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cake.Core, Version=0.20.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cake.Core.0.20.0\lib\net45\Cake.Core.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Cake.Core, Version=0.22.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cake.Core.0.22.0\lib\net46\Cake.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
