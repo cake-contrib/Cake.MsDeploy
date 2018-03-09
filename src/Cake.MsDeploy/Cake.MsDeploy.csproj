@@ -18,10 +18,12 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <WarningLevel>0</WarningLevel>
+    <DocumentationFile>bin\Debug\netstandard2.0\Cake.MsDeploy.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <WarningLevel>0</WarningLevel>
+    <DocumentationFile>bin\Release\netstandard2.0\Cake.MsDeploy.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
