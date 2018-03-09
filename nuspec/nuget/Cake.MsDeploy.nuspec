@@ -17,8 +17,8 @@
       <tags>cake script build msdeploy webdeploy</tags>
    </metadata>
    <files>
-      <file src="Cake.MsDeploy.dll" target="lib/net45" />
-      <file src="Cake.MsDeploy.pdb" target="lib/net45" />
-      <file src="Cake.MsDeploy.xml" target="lib/net45" />
+      <file src="netstandard2.0/Cake.MsDeploy.dll" target="lib/netstandard2.0" />
+      <file src="netstandard2.0/Cake.MsDeploy.pdb" target="lib/netstandard2.0" />
+      <file src="netstandard2.0/Cake.MsDeploy.xml" target="lib/netstandard2.0" />
    </files>
 </package>
