@@ -1,131 +1,31 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EF4D86EB-7401-4E38-A02B-AB4884DCB168}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cake.MsDeploy</RootNamespace>
-    <AssemblyName>Cake.MsDeploy</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>0.0.0</Version>
+    <Authors>louisfischer,cake-contrib</Authors>
+    <Company>cake-contrib</Company>
+    <Product>Cake.MsDeploy</Product>
+    <PackageTags>cake script build msdeploy webdeploy</PackageTags>
+    <RepositoryType>git</RepositoryType>
+    <Copyright>Copyright (c) Cake Contributions 2017</Copyright>
+    <Description>Cake Build addin for using the MsDeploy command line interface (cli).</Description>
+    <PackageLicenseUrl>https://github.com/cake-contrib/Cake.MsDeploy/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/cake-contrib/Cake.MsDeploy</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/cake-contrib/Cake.MsDeploy</RepositoryUrl>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <WarningLevel>0</WarningLevel>
-    <DocumentationFile>Cake.MsDeploy.xml</DocumentationFile>
-    <NoWarn>CS0436,CS1591,CS0436,CS0168,CS0649,CS1573,CS1591,CS1572,CS0114,CS1570,CS0618,CS1587,CS1734,CS0114,CS0659,CS0612,CS0246,S1571,CS1574</NoWarn>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>Cake.MsDeploy.xml</DocumentationFile>
-    <NoWarn>CS0436,CS1591,CS0436,CS0168,CS0649,CS1573,CS1591,CS1572,CS0114,CS1570,CS0618,CS1587,CS1734,CS0114,CS0659,CS0612,CS0246,S1571,CS1574</NoWarn>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <WarningLevel>0</WarningLevel>
   </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Cake.Core, Version=0.22.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cake.Core.0.22.0\lib\net46\Cake.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Cake.Core" Version="0.26.1" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="..\SolutionInfo.cs">
-      <Link>Properties\SolutionInfo.cs</Link>
-    </Compile>
-    <Compile Include="MsDeployAliases.cs" />
-    <Compile Include="Directives\SkipAction.cs" />
-    <Compile Include="IMsDeployArgument.cs" />
-    <Compile Include="MsDeployRunner.cs" />
-    <Compile Include="MsDeploySettings.cs" />
-    <Compile Include="Parameters\BaseParameter.cs" />
-    <Compile Include="Properties\NamespaceDoc.cs" />
-    <Compile Include="Parameters\DeclareParameter.cs" />
-    <Compile Include="Parameters\IParameter.cs" />
-    <Compile Include="Parameters\ParameterKind.cs" />
-    <Compile Include="Parameters\SetParameter.cs" />
-    <Compile Include="Directives\SkipDirective.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\AuthenticationScheme.cs" />
-    <Compile Include="Providers\IMsDeployProvider.cs" />
-    <Compile Include="Providers\MsDeployProvider.cs" />
-    <Compile Include="Operation.cs" />
-    <Compile Include="Providers\Direction.cs" />
-    <Compile Include="Providers\MsDeployProviders\AppHostConfigProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\AppHostSchemaProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\AppPoolConfigProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\AppPoolEnable32BitProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\AppPoolNetFxProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\AppPoolPipelineProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\AppPoolPipelineMode.cs" />
-    <Compile Include="Providers\MsDeployProviders\ArchiveDirProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\AutoProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\BackupManagerProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\BackupSettingsProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\CertProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\CertStoreSettingsProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\CommandProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\ComObject32Provider.cs" />
-    <Compile Include="Providers\MsDeployProviders\ComObject64Provider.cs" />
-    <Compile Include="Providers\MsDeployProviders\ContentPathProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\ContentPathAspNetCoreProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\ContentPathLibProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\CreateAppProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\DacpacAction.cs" />
-    <Compile Include="Providers\MsDeployProviders\DbDacFxProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\DbFullSqlProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\DbMySqlProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\DbSqliteProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\DirPathProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\FilePathProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\GacAssemblyProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\GacInstallProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\IisAppProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\MachineConfig32Provider.cs" />
-    <Compile Include="Providers\MsDeployProviders\MachineConfig64Provider.cs" />
-    <Compile Include="Providers\MsDeployProviders\ManifestProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\MetaKeyProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\PackageProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\RecycleAppProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\RecycleMode.cs" />
-    <Compile Include="Providers\MsDeployProviders\RegKeyProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\RegValueProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\RootWebConfig32Provider.cs" />
-    <Compile Include="Providers\MsDeployProviders\RootWebConfig64Provider.cs" />
-    <Compile Include="Providers\MsDeployProviders\RunCommandProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\SetAclProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\SetAclResourceType.cs" />
-    <Compile Include="Providers\MsDeployProviders\UrlScanConfigProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\WebServerProvider.cs" />
-    <Compile Include="Providers\MsDeployProviders\WebServer60Provider.cs" />
-    <Compile Include="Providers\MsDeployProviders\AppHostAuthOverrideProvider.cs" />
-    <Compile Include="Rules\ReplacementRule.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
