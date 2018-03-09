@@ -1,28 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>0.0.0</Version>
-    <Authors>louisfischer,cake-contrib</Authors>
-    <Company>cake-contrib</Company>
-    <Product>Cake.MsDeploy</Product>
-    <PackageTags>cake script build msdeploy webdeploy</PackageTags>
-    <RepositoryType>git</RepositoryType>
-    <Copyright>Copyright (c) Cake Contributions 2017</Copyright>
-    <Description>Cake Build addin for using the MsDeploy command line interface (cli).</Description>
-    <PackageLicenseUrl>https://github.com/cake-contrib/Cake.MsDeploy/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/cake-contrib/Cake.MsDeploy</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</PackageIconUrl>
-    <RepositoryUrl>https://github.com/cake-contrib/Cake.MsDeploy</RepositoryUrl>
+    <TargetFrameworks>netstandard2.0;net46;</TargetFrameworks>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
+    <DefineConstants>NETSTANDARD2_0</DefineConstants>
     <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net46'">
+    <DefineConstants>net46</DefineConstants>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
     <DocumentationFile>bin\Debug\netstandard2.0\Cake.MsDeploy.xml</DocumentationFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <WarningLevel>0</WarningLevel>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
     <DocumentationFile>bin\Release\netstandard2.0\Cake.MsDeploy.xml</DocumentationFile>
   </PropertyGroup>
 
