@@ -101,31 +101,32 @@ namespace Cake.MsDeploy
             // RemoveParams ?
             if (settings.RemoveParams != null && settings.RemoveParams.Any())
             {
-                foreach (var removeParam in settings.RemoveParams)
-                    builder.Append("-removeParam:{0}", removeParam);
+                AddParamValues("removeParam", settings.RemoveParams, builder);
             }
 
             // EnableLinks ?
             if (settings.EnableLinks != null && settings.EnableLinks.Any())
 			{
-				foreach (var enableLink in settings.EnableLinks)
-					builder.Append("-enableLink:{0}", enableLink);
-			}
+                AddParamValues("enableLink", settings.EnableLinks, builder);
+            }
 
 			// DisableLinks ?
 			if (settings.DisableLinks != null && settings.DisableLinks.Any())
 			{
-				foreach (var disableLink in settings.DisableLinks)
-					builder.Append("-disableLink:{0}", disableLink);
-			}
+                AddParamValues("disableLink", settings.DisableLinks, builder);
+            }
 
             // EnableRules ?
             if (settings.EnableRules != null && settings.EnableRules.Any())
-                builder.Append("-enableRule:{0}", string.Join<string>(",", settings.EnableRules));
+            {
+                AddParamValues("enableRule", settings.EnableRules, builder);
+            }
 
             // DisableRules ?
             if (settings.DisableRules != null && settings.DisableRules.Any())
-                builder.Append("-disableRule:{0}", string.Join<string>(",", settings.DisableRules));
+            {
+                AddParamValues("disableRule", settings.DisableRules, builder);
+            }
 
             // ReplacementRules ?
             if (settings.ReplacementRules != null && settings.ReplacementRules.Any())
@@ -198,6 +199,14 @@ namespace Cake.MsDeploy
 				builder.Append("-postSync:{0}", settings.PostSyncCommand.ToCommandLineArgument());
 
 			return builder;
+        }
+
+        private void AddParamValues(string paramName, IEnumerable<string> paramValues, ProcessArgumentBuilder builder)
+        {
+            foreach (var value in paramValues)
+            {
+                builder.Append("-{0}:{1}", paramName, value);
+            }
         }
 
         /// <summary>
