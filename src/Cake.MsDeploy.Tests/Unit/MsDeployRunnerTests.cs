@@ -299,6 +299,68 @@ namespace Cake.MsDeploy.Tests.Unit
 				// Then
 				Assert.Equal("-verb:sync -source:package=\"./src/Application.zip\" -dest:auto,computerName=\"cake.computerName.com\",authtype=NTLM,includeAcls=false,tempAgent=true -setParam:name=\"IIS Web Application Name\",value=\"www.cake.com\" -enableLink:AppPoolExtension -retryAttempts:5 -retryInterval:5000 -whatif -allowUntrusted -useCheckSum", result.Args);
 			}
-		}
+
+            [Theory]
+            [InlineData(new[] { "AppOffline" }, "-verb:sync -source:dirPath=\"./Publish\" -dest:dirPath=\"./Deploy\" -enableRule:AppOffline -whatif")]
+            [InlineData(new[] { "AppOffline", "DoNotDelete" }, "-verb:sync -source:dirPath=\"./Publish\" -dest:dirPath=\"./Deploy\" -enableRule:AppOffline -enableRule:DoNotDelete -whatif")]
+            public void Should_Add_EnableRules(string[] rules, string expected)
+            {
+                // Given
+                var fixture = new MsDeployFixture();
+                fixture.Settings = new MsDeploySettings
+                {
+                    Verb = Operation.Sync,
+                    Source = new DirPathProvider
+                    {
+                        Direction = Direction.source,
+                        Path = "./Publish"
+                    },
+                    Destination = new DirPathProvider
+                    {
+                        Direction = Direction.dest,
+                        Path = "./Deploy"
+                    },
+                    WhatIf = true,
+                    EnableRules = rules
+                };
+
+                // When
+                var result = fixture.Run();
+
+                // Then
+                Assert.Equal(expected, result.Args);
+            }
+
+            [Theory]
+            [InlineData(new[] { "BackupRule" }, "-verb:sync -source:dirPath=\"./Publish\" -dest:dirPath=\"./Deploy\" -disableRule:BackupRule -whatif")]
+            [InlineData(new[] { "BackupRule", "DefaultDependencyCheck" }, "-verb:sync -source:dirPath=\"./Publish\" -dest:dirPath=\"./Deploy\" -disableRule:BackupRule -disableRule:DefaultDependencyCheck -whatif")]
+            public void Should_Add_DisableRules(string[] rules, string expected)
+            {
+                // Given
+                var fixture = new MsDeployFixture();
+                fixture.Settings = new MsDeploySettings
+                {
+                    Verb = Operation.Sync,
+                    Source = new DirPathProvider
+                    {
+                        Direction = Direction.source,
+                        Path = "./Publish"
+                    },
+                    Destination = new DirPathProvider
+                    {
+                        Direction = Direction.dest,
+                        Path = "./Deploy"
+                    },
+                    WhatIf = true,
+                    DisableRules = rules
+                };
+
+                // When
+                var result = fixture.Run();
+
+                // Then
+                Assert.Equal(expected, result.Args);
+            }
+        }
 	}
 }
