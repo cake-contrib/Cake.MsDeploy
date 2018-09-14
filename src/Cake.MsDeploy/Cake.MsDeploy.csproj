@@ -1,20 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net46;</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
-    <DefineConstants>NETSTANDARD2_0</DefineConstants>
     <WarningLevel>0</WarningLevel>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)'=='net46'">
-    <DefineConstants>net46</DefineConstants>
-    <WarningLevel>0</WarningLevel>
-  </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
     <DocumentationFile>bin\Debug\netstandard2.0\Cake.MsDeploy.xml</DocumentationFile>
   </PropertyGroup>
@@ -24,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cake.Core" Version="0.26.1" />
+    <PackageReference Include="Cake.Core" Version="0.30.0" />
   </ItemGroup>
 
 </Project>
