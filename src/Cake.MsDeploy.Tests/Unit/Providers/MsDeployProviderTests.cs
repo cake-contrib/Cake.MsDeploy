@@ -1,11 +1,7 @@
 ﻿using Cake.MsDeploy.Providers;
 using Cake.MsDeploy.Providers.MsDeployProviders;
 using Cake.MsDeploy.Tests.Fixture;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Cake.MsDeploy.Tests.Unit.Providers
@@ -24,11 +20,11 @@ namespace Cake.MsDeploy.Tests.Unit.Providers
                 var result = Record.Exception(() => obj.AppendCommandLineArgument(null));
 
                 // Then
-                Assert.IsArgumentNullException(result, "sb");
+                AssertEx.IsArgumentNullException(result, "sb");
             }
 
             [Theory]
-            [MemberData("MsDeployProviderData")]
+            [MemberData(nameof(MsDeployProviderData))]
             public void Should_Append_Options(MsDeployProvider msdeployProvider, string expected)
             {
                 //Given --> When

@@ -1,6 +1,7 @@
 ﻿using Cake.Core;
 using NSubstitute;
 using Xunit;
+
 namespace Cake.MsDeploy.Tests.Unit
 {
 
@@ -18,7 +19,7 @@ namespace Cake.MsDeploy.Tests.Unit
                 var result = Record.Exception(() => MsDeployAliases.MsDeploy(null, null));
 
                 // Then
-                Assert.IsArgumentNullException(result, "context");
+                AssertEx.IsArgumentNullException(result, "context");
             }
 
             [Fact]
@@ -31,7 +32,7 @@ namespace Cake.MsDeploy.Tests.Unit
                 var result = Record.Exception(() => MsDeployAliases.MsDeploy(context, null));
 
                 // Then
-                Assert.IsArgumentNullException(result, "settings");
+                AssertEx.IsArgumentNullException(result, "settings");
             }            
         }
     }
