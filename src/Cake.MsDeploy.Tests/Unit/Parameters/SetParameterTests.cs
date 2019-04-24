@@ -20,7 +20,7 @@ namespace Cake.MsDeploy.Tests.Unit.Parameters
                 var result = Record.Exception(() => declareParameter.AppendCommandLineArgument(null));
 
                 // Then
-                Assert.IsArgumentNullException(result, "sb");
+                AssertEx.IsArgumentNullException(result, "sb");
             }
 
             [Fact]
@@ -33,12 +33,11 @@ namespace Cake.MsDeploy.Tests.Unit.Parameters
                 var result = Record.Exception(() => setParameter.AppendCommandLineArgument(new StringBuilder()));
 
                 // Then
-                Assert.IsExceptionWithMessage<NullReferenceException>(result, "Name is required when using the SetParameter option.");
+                AssertEx.IsExceptionWithMessage<NullReferenceException>(result, "Name is required when using the SetParameter option.");
             }
 
-
             [Theory]
-            [MemberData("SetParameterData")]
+            [MemberData(nameof(SetParameterData))]
             public void Should_Append_Options(SetParameter setParameter, string expected)
             {
                 //Given --> When
