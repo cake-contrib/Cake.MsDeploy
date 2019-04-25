@@ -18,12 +18,12 @@ namespace Cake.MsDeploy.Tests.Unit.Directives
                 var result = Record.Exception(() => rule.AppendCommandLineArgument(null));
 
                 // Then
-                Assert.IsArgumentNullException(result, "sb");
+                AssertEx.IsArgumentNullException(result, "sb");
             }
             
 
             [Theory]
-            [MemberData("SkipDirectiveData")]
+            [MemberData(nameof(SkipDirectiveData))]
             public void Should_Append_Options(SkipDirective directive, string expected)
             {
                 //Given --> When

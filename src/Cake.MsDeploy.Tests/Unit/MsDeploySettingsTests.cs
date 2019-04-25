@@ -13,7 +13,7 @@ namespace Cake.MsDeploy.Tests.Unit
                 var settings = new MsDeploySettings();
 
                 //Act ==> Assert
-                Assert.Equal<Operation>(settings.Verb, Operation.Sync);
+                Assert.Equal<Operation>(Operation.Sync, settings.Verb);
             }
         }
     }

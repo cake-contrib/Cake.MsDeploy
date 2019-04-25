@@ -20,7 +20,7 @@ namespace Cake.MsDeploy.Tests.Unit.Rules
                 var result = Record.Exception(() => rule.AppendCommandLineArgument(null));
 
                 // Then
-                Assert.IsArgumentNullException(result, "sb");
+                AssertEx.IsArgumentNullException(result, "sb");
             }
 
             [Fact]
@@ -36,7 +36,7 @@ namespace Cake.MsDeploy.Tests.Unit.Rules
             }
 
             [Theory]
-            [MemberData("ReplacementRuleData")]
+            [MemberData(nameof(ReplacementRuleData))]
             public void Should_Append_Options(ReplacementRule rule, string expected)
             {
                 //Given --> When
