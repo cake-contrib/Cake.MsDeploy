@@ -15,13 +15,13 @@ it would be.
 
 # Making Changes
 * From your fork of the repository, create a topic branch where work on your change will take place.
-* To quickly create a topic branch based on master; `git checkout -b my_contribution master`. Please avoid working directly on the `master` branch.
+* To quickly create a topic branch based on develop; `git checkout -b my_contribution develop`. Please avoid working directly on the `develop` or `master` branch.
 * Make commits of logical units.
 * Check for unnecessary whitespace with `git diff --check` before committing.
 * Please follow the prevailing code conventions in the repository. Differences in style make the code harder to understand for everyone.
 * Make sure your commit messages are in the proper format.
 ````
-    Add more cowbell to Get-Something.ps1
+    Add more cowbell to Get-Something
 
     The functionaly of Get-Something would be greatly improved if there was a little
     more 'pizzazz' added to it. I propose a cowbell. Adding more cowbell has been
@@ -29,8 +29,8 @@ it would be.
     as a rock legend.
 ````
 
-* Make sure you have added all the necessary Pester tests for your changes.
-* Run _all_ PESTER tests in the module to assure nothing else was accidentally broken.
+* Make sure you have added all the necessary unit tests for your changes.
+* Run _all_ unit tests to assure nothing else was accidentally broken.
 
 # Documentation
 We are infallible and as such the documenation needs no corectoin. In the highly
