@@ -28,6 +28,6 @@ In order to use this extension, [MsDeploy](https://www.microsoft.com/en-us/downl
 
 ## Discussion
 
-If you have questions, search for an existing one, or create a new discussion on the Cake GitHub repository, using the  `:grey_question: Extension Q&A` category.
+If you have questions, search for an existing one, or create a new discussion on the Cake GitHub repository, using the  `Extension Q&A` category.
 
 [![Join in the discussion on the Cake repository](https://img.shields.io/badge/GitHub-Discussions-green?logo=github)](https://github.com/cake-build/cake/discussions)
