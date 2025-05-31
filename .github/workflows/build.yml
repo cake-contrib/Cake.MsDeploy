@@ -1,0 +1,77 @@
+name: Build & Release
+
+on:
+  workflow_dispatch:
+    inputs:
+        target:
+            description: 'Task'
+            required: true
+            default: Default
+            type: choice
+            options:
+                - Default
+                - Clean
+                - Restore
+                - Build
+                - Tests
+                - Pack
+                - Push
+
+        pushToNuget:
+            description: 'Push to Nuget'
+            required: false
+            default: false
+            type: boolean
+
+        logLevel:
+            description: 'Verbosity'
+            required: false
+            default: Normal
+            type: choice
+            options:
+                - Quiet
+                - Minimal
+                - Normal
+                - Verbose
+                - Diagnostic
+  pull_request:
+    branches:
+      - "**"
+    paths-ignore:
+      - "README.md"
+
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_NOLOGO: true
+  CAKE_SETTINGS_SKIPPACKAGEVERSIONCHECK: true
+  
+jobs:
+    build:
+        runs-on: ${{ matrix.os }}
+        strategy:
+            matrix:
+                os: [windows-latest]
+
+        name: ${{ matrix.os }}
+        steps:
+        - name: Setup .NET
+          uses: actions/setup-dotnet@v4
+          with:
+            dotnet-version: ${{ vars.CAKE_DOTNET_VERSION }}
+
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+
+        - name: Run the Cake script
+          uses: cake-build/cake-action@v3
+          with:
+            target: ${{ inputs.target || 'Default' }}
+            verbosity: ${{ inputs.logLevel || 'Normal' }}
+            cake-version: tool-manifest
+            arguments: |
+                NUGET_PUSH: ${{ inputs.pushToNuget || false }}
+                NUGET_URL: ${{ secrets.NUGET_SOURCE }}
+                NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}

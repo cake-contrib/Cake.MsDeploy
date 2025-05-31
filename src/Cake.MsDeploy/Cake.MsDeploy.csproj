@@ -1,12 +1,46 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+    <AssemblyName>Cake.MsDeploy</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <GenerateAssemblyVersionAttribute>true</GenerateAssemblyVersionAttribute>
+    <GenerateAssemblyFileVersionAttribute>true</GenerateAssemblyFileVersionAttribute>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <NoWarn>1701;1702;1591;1574</NoWarn>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <DebugType>portable</DebugType>
+    <IncludeSymbols>true</IncludeSymbols>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <NoWarn>$(NoWarn);NU5048;CS8603;CS8625;CS1591;CS1591;CS8601;CS8600;CS8618;CS8604;CS8714;CS8618;CS8765;CS1574</NoWarn>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <TreatSpecificWarningsAsErrors />
+    <Nullable>enable</Nullable>
+    <CheckEolTargetFramework>false</CheckEolTargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Version>0.0.0</Version>
+    <Authors>louisfischer,cake-contrib</Authors>
+    <Company>Cake Contributions Organization</Company>
+    <Description>Cake.MsDeploy is an Addin that extends [Cake](http://cakebuild.net/) for executing commands with the MsDeploy.exe (Web Deploy) command line interface (cli). In order to use this extension, [MsDeploy](https://www.microsoft.com/en-us/download/details.aspx?id=106070) will already have to be installed on the computer the cake build script is being executed on.</Description>
+    <Copyright>Copyright © 2016-$([System.DateTime]::Now.Year) Cake Contributions - Provided under the MIT License</Copyright>
+    <PackageTags>cake;script;build;msdeploy;webdeploy;cake-frosting;cake-addin;ake-contrib;</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>images\icon.png</PackageIcon>
+    <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/addin/cake-contrib-addin-medium.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/cake-contrib/Cake.MsDeploy</PackageProjectUrl>
+    <PackageReleaseNotes>https://github.com/cake-contrib/Cake.MsDeploy/releases</PackageReleaseNotes>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/cake-contrib/Cake.MsDeploy.git</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Cake.Core" Version="4.0.0" PrivateAssets="All" />
+    <PackageReference Include="Cake.Core" Version="5.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
   </ItemGroup>
-
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="" />
+    <None Include="..\..\assets\cake-addin.png" Pack="true" Visible="false" PackagePath="images\icon.png" />
+  </ItemGroup>
 </Project>
