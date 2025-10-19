@@ -1,4 +1,9 @@
 <Solution>
+  <Folder Name="/.props/">
+    <File Path=".editorconfig" />
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+  </Folder>
   <Project Path="src/Cake.MsDeploy.Tests/Cake.MsDeploy.Tests.csproj" />
   <Project Path="src/Cake.MsDeploy/Cake.MsDeploy.csproj" />
 </Solution>
