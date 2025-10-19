@@ -1,12 +1,12 @@
-﻿using Cake.MsDeploy.Parameters;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Cake.MsDeploy.Parameters;
 using Xunit;
 
 namespace Cake.MsDeploy.Tests.Unit.Parameters
 {
-    public class DeclareParameterTests
+    public static class DeclareParameterTests
     {
         public sealed class TheToCommandLineArgument
         {
@@ -17,7 +17,7 @@ namespace Cake.MsDeploy.Tests.Unit.Parameters
                 var declareParameter = new DeclareParameter();
 
                 // When
-                var result = Record.Exception(() => declareParameter.AppendCommandLineArgument(null));
+                var result = Record.Exception(() => declareParameter.AppendCommandLineArgument(null!));
 
                 // Then
                 AssertEx.IsArgumentNullException(result, "sb");
@@ -36,16 +36,15 @@ namespace Cake.MsDeploy.Tests.Unit.Parameters
                 AssertEx.IsExceptionWithMessage<NullReferenceException>(result, "Name is required when using the DeclareParameter option.");
             }
 
-
             [Theory]
             [MemberData(nameof(DeclareParameterData))]
             public void Should_Append_Options(DeclareParameter declareParameter, string expected)
             {
-                //Given --> When
+                // Given --> When
                 var actual = declareParameter.ToCommandLineArgument();
 
-                //Then
-                Assert.Equal(expected, declareParameter.ToCommandLineArgument());
+                // Then
+                Assert.Equal(expected, actual);
             }
 
             public static IEnumerable<object[]> DeclareParameterData()
@@ -54,8 +53,8 @@ namespace Cake.MsDeploy.Tests.Unit.Parameters
                 {
                     new object[]
                     {
-                        new DeclareParameter {  Name = "OracleDbUserName", Description = "Oracle Database Username", Kind = ParameterKind.ProviderPath, Scope = "app.config", Match = "12;10;29",  DefaultValue = "scott",  Tags = new string[] { "Oracle", "DBA" }  },  // <------------- Combined Properties to test
-                        "-declareParam:name=\"OracleDbUserName\",kind=\"ProviderPath\",scope=\"app.config\",match=\"12;10;29\",defaultValue=\"scott\",description=\"Oracle Database Username\",tags=\"Oracle,DBA\""                    // <------------- Expected  Result
+                        new DeclareParameter { Name = "OracleDbUserName", Description = "Oracle Database Username", Kind = ParameterKind.ProviderPath, Scope = "app.config", Match = "12;10;29",  DefaultValue = "scott",  Tags = new string[] { "Oracle", "DBA" } },  // <------------- Combined Properties to test
+                        "-declareParam:name=\"OracleDbUserName\",kind=\"ProviderPath\",scope=\"app.config\",match=\"12;10;29\",defaultValue=\"scott\",description=\"Oracle Database Username\",tags=\"Oracle,DBA\"", // <------------- Expected  Result
                     }
                 };
             }

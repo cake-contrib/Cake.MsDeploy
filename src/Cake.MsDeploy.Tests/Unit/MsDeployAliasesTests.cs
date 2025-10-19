@@ -4,7 +4,6 @@ using Xunit;
 
 namespace Cake.MsDeploy.Tests.Unit
 {
-
     public sealed class MsDeployAliasesTests
     {
         public sealed class TheMsDeployMethod
@@ -16,10 +15,10 @@ namespace Cake.MsDeploy.Tests.Unit
                 var context = Substitute.For<ICakeContext>();
 
                 // When
-                var result = Record.Exception(() => MsDeployAliases.MsDeploy(null, null));
+                var result = Record.Exception(() => MsDeployAliases.MsDeploy(null!, null!));
 
                 // Then
-                AssertEx.IsArgumentNullException(result, "context");
+                AssertEx.IsArgumentNullException(result, nameof(context));
             }
 
             [Fact]
@@ -29,11 +28,11 @@ namespace Cake.MsDeploy.Tests.Unit
                 var context = Substitute.For<ICakeContext>();
 
                 // When
-                var result = Record.Exception(() => MsDeployAliases.MsDeploy(context, null));
+                var result = Record.Exception(() => MsDeployAliases.MsDeploy(context, null!));
 
                 // Then
                 AssertEx.IsArgumentNullException(result, "settings");
-            }            
+            }
         }
     }
 }

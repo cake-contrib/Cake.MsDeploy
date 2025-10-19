@@ -17,7 +17,7 @@ namespace Cake.MsDeploy.Tests.Unit.Rules
                 var rule = new ReplacementRule();
 
                 // When
-                var result = Record.Exception(() => rule.AppendCommandLineArgument(null));
+                var result = Record.Exception(() => rule.AppendCommandLineArgument(null!));
 
                 // Then
                 AssertEx.IsArgumentNullException(result, "sb");
@@ -31,7 +31,6 @@ namespace Cake.MsDeploy.Tests.Unit.Rules
                 var sb = new StringBuilder();
 
                 // When --> Then
-                
                 Assert.Throws<NullReferenceException>(() => { rule.AppendCommandLineArgument(sb); });
             }
 
@@ -39,11 +38,11 @@ namespace Cake.MsDeploy.Tests.Unit.Rules
             [MemberData(nameof(ReplacementRuleData))]
             public void Should_Append_Options(ReplacementRule rule, string expected)
             {
-                //Given --> When
+                // Given --> When
                 var actual = rule.ToCommandLineArgument();
 
-                //Then
-                Assert.Equal(expected, rule.ToCommandLineArgument());
+                // Then
+                Assert.Equal(expected, actual);
             }
 
             public static IEnumerable<object[]> ReplacementRuleData()
@@ -52,26 +51,26 @@ namespace Cake.MsDeploy.Tests.Unit.Rules
                 {
                     new object[]
                     {
-                        new ReplacementRule { ObjectName = "binding", ScopeAttributeName = "Image"  },  // <------------- Indivdual Property to test
+                        new ReplacementRule { ObjectName = "binding", ScopeAttributeName = "Image" },  // <------------- Indivdual Property to test
                         "-replace:objectName=binding,scopeAttributeName=\"Image\"",                    // <------------- Expected  Result
                     },
 
                     new object[]
                     {
-                        new ReplacementRule { ObjectName = "binding", ScopeAttributeValue = "jpg"  },  // <------------- Indivdual Property to test
+                        new ReplacementRule { ObjectName = "binding", ScopeAttributeValue = "jpg" },  // <------------- Indivdual Property to test
                         "-replace:objectName=binding,scopeAttributeValue=\"jpg\"",                     // <------------- Expected  Result
                     },
 
                     new object[]
                     {
-                        new ReplacementRule { ObjectName = "binding", TargetAttributeName = "png"  },   // <------------- Indivdual Property to test
+                        new ReplacementRule { ObjectName = "binding", TargetAttributeName = "png" },   // <------------- Indivdual Property to test
                         "-replace:objectName=binding,targetAttributeName=\"png\"",                       // <------------- Expected  Result
                     },
 
                     new object[]
                     {
-                        new ReplacementRule { ObjectName = "binding", Match = "true"  },  // <------------- Indivdual Property to test
-                         "-replace:objectName=binding,match=\"true\"",                       // <------------- Expected  Result
+                        new ReplacementRule { ObjectName = "binding", Match = "true" },  // <------------- Indivdual Property to test
+                        "-replace:objectName=binding,match=\"true\"",                       // <------------- Expected  Result
                     },
 
                     new object[]
@@ -82,11 +81,11 @@ namespace Cake.MsDeploy.Tests.Unit.Rules
 
                     new object[]
                     {
-                        new ReplacementRule { ObjectName = "virtualdirectory", ScopeAttributeName = "physicalPath", ScopeAttributeValue = "Image", TargetAttributeName ="allowSubDirConfig", Match = "true", Value = "false" },  // <------------- Combined Properties to test
-                        "-replace:objectName=virtualdirectory,scopeAttributeName=\"physicalPath\",scopeAttributeValue=\"Image\",targetAttributeName=\"allowSubDirConfig\",match=\"true\",replace=\"false\""               // <------------- Expected  Result
-                    }
+                        new ReplacementRule { ObjectName = "virtualdirectory", ScopeAttributeName = "physicalPath", ScopeAttributeValue = "Image", TargetAttributeName = "allowSubDirConfig", Match = "true", Value = "false" },  // <------------- Combined Properties to test
+                        "-replace:objectName=virtualdirectory,scopeAttributeName=\"physicalPath\",scopeAttributeValue=\"Image\",targetAttributeName=\"allowSubDirConfig\",match=\"true\",replace=\"false\"",               // <------------- Expected  Result
+                    },
                 };
             }
-        }    
+        }
     }
 }

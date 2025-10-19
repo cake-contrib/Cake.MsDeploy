@@ -1,12 +1,12 @@
-﻿using Cake.MsDeploy.Parameters;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Cake.MsDeploy.Parameters;
 using Xunit;
 
 namespace Cake.MsDeploy.Tests.Unit.Parameters
 {
-    public class SetParameterTestsTests
+    public static class SetParameterTests
     {
         public sealed class TheToCommandLineArgument
         {
@@ -17,7 +17,7 @@ namespace Cake.MsDeploy.Tests.Unit.Parameters
                 var declareParameter = new DeclareParameter();
 
                 // When
-                var result = Record.Exception(() => declareParameter.AppendCommandLineArgument(null));
+                var result = Record.Exception(() => declareParameter.AppendCommandLineArgument(null!));
 
                 // Then
                 AssertEx.IsArgumentNullException(result, "sb");
@@ -40,11 +40,11 @@ namespace Cake.MsDeploy.Tests.Unit.Parameters
             [MemberData(nameof(SetParameterData))]
             public void Should_Append_Options(SetParameter setParameter, string expected)
             {
-                //Given --> When
+                // Given --> When
                 var actual = setParameter.ToCommandLineArgument();
 
-                //Then
-                Assert.Equal(expected, setParameter.ToCommandLineArgument());
+                // Then
+                Assert.Equal(expected, actual);
             }
 
             public static IEnumerable<object[]> SetParameterData()
@@ -53,9 +53,9 @@ namespace Cake.MsDeploy.Tests.Unit.Parameters
                 {
                     new object[]
                     {
-                        new SetParameter {  Name = "OracleDbPassword", Description = "Oracle Database Password", Kind = ParameterKind.ProviderPath, Scope = "app.config", Match = "12;10;29",  Value = "tiger" },  // <------------- Combined Properties to test
-                        "-setParam:name=\"OracleDbPassword\",kind=\"ProviderPath\",scope=\"app.config\",match=\"12;10;29\",value=\"tiger\",description=\"Oracle Database Password\""                    // <------------- Expected  Result
-                    }
+                        new SetParameter { Name = "OracleDbPassword", Description = "Oracle Database Password", Kind = ParameterKind.ProviderPath, Scope = "app.config", Match = "12;10;29",  Value = "tiger" },  // <------------- Combined Properties to test
+                        "-setParam:name=\"OracleDbPassword\",kind=\"ProviderPath\",scope=\"app.config\",match=\"12;10;29\",value=\"tiger\",description=\"Oracle Database Password\"", // <------------- Expected  Result
+                    },
                 };
             }
         }
